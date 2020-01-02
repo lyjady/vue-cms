@@ -47,7 +47,17 @@ module.exports = {
             //为什么两个div中引用在不同文件夹下相同的名字的图片,后面的图片会覆盖前面的图片?
             //因为在页面中样式里的url内图片的引用是http://localhost:8080/xxx.jpg,说明生成的图片是在root目录下
             //那就说明了webpack会将css内引用的图片加载到内存中然后映射到root目录下,那么后面的图片会覆盖前面的人图片咋内存中.
-            {test: /\.(jpg|png|gif|bmp|jpeg)$/, use: "url-loader?limit=23222&name=[hash:8]-[name].[ext]"},
+            {
+                test: /\.(jpg|png|gif|bmp|jpeg)$/,
+                use: [
+                    {
+                        loader: "url-loader?limit=23222&name=[hash:8]-[name].[ext]",
+                        options: {
+                            esModule: false
+                        }
+                    }
+                ]
+            },
             //处理字体文件
             {test: /\.(ttf|eot|svg|woff|woff2)$/, use: "url-loader"},
             //将除node_modules外的js文件交个babel-loader解析
