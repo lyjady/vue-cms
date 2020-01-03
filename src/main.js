@@ -9,6 +9,8 @@ import VueResource from 'vue-resource';
 import ElementUI from 'element-ui';
 import moment from "moment";
 import axios from 'axios';
+import Vant from 'vant';
+import 'vant/lib/index.css';
 
 
 Vue.prototype.$axios = axios;
@@ -16,6 +18,7 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(mintUI);
 Vue.use(ElementUI);
+Vue.use(Vant);
 
 Vue.http.options.emulateJSON = true;
 
