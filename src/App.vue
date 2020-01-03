@@ -1,7 +1,7 @@
 <template>
     <div class="app-container">
         <!-- header -->
-        <mt-header fixed title="叽霸商城">叽霸商城</mt-header>
+        <mt-header fixed title="秀清大猪猪">秀清大猪猪</mt-header>
 
         <!-- content -->
         <transition>
@@ -39,6 +39,7 @@
 <style scoped>
     .app-container {
         padding-top: 40px;
+        padding-bottom: 60px;
         overflow-x: hidden;
     }
 

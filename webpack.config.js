@@ -39,7 +39,7 @@ module.exports = {
             {test: /\.css$/, use: ['style-loader', 'css-loader']},
             //添加less-loader与scss-loader使webpack对.less, .scss文件能够解析
             {test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']},
-            {test: /\.scss$/, use: ['style-loader', 'css-loader', 'scss=loader']},
+            {test: /\.scss$/, use: ['style-loader', 'css-loader', 'scss-loader']},
             //将图片交给url-loader进行处理,如果默认进行这样的配置那么图片将是base64格式
             //如果想让图片变成普通的url格式进行引用那么设置limit参数将值设置成小于图片大小的值就行了
             //此时图片的名字是将图片内容进行Hash计算的结果如果不想进行Hash计算那么加上name=[name].[ext],说明使用图片原来的名称与扩展名
