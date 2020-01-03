@@ -8,11 +8,16 @@ import VueRouter from "vue-router";
 import VueResource from 'vue-resource';
 import ElementUI from 'element-ui';
 import moment from "moment";
+import axios from 'axios';
 
+
+Vue.prototype.$axios = axios;
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(mintUI);
 Vue.use(ElementUI);
+
+Vue.http.options.emulateJSON = true;
 
 Vue.filter('dataFormat', function (dataStr, pattern='YYYY-MM-DD HH:mm:ss') {
     return moment(dataStr).format(pattern)

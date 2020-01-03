@@ -6,6 +6,10 @@
   ],
   "plugins": [
     "@babel/plugin-proposal-object-rest-spread",
-    "@babel/plugin-transform-runtime"
+    "@babel/plugin-transform-runtime",
+    "transform-remove-strict-mode"
+  ],
+  "ignore": [
+    "./src/lib/mui/js/mui.min.js"
   ]
 }
