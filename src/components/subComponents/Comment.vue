@@ -16,7 +16,6 @@
                 </div>
             </div>
         </div>
-        <mt-button type="danger" size="large" plain @click="getMoreComment">加载更多</mt-button>
     </div>
 </template>
 
@@ -57,11 +56,22 @@
                         Toast('评论失败');
                     }
                 })
+            },
+            scrollBottom() {
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const windowHeight  = document.documentElement.clientHeight || document.body.clientHeight;
+                const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+                if (scrollTop + windowHeight === scrollHeight) {
+                    this.getMoreComment();
+                }
             }
         },
         props: ["id"],
         created() {
             this.getNewsComment();
+        },
+        mounted() {
+            window.addEventListener('scroll', this.scrollBottom);
         }
     }
 </script>

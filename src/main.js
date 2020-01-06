@@ -11,6 +11,7 @@ import moment from "moment";
 import axios from 'axios';
 import Vant from 'vant';
 import 'vant/lib/index.css';
+import 'element-ui/lib/theme-chalk/index.css';
 
 
 Vue.prototype.$axios = axios;
