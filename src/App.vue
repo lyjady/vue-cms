@@ -82,10 +82,14 @@
         padding-bottom: 0;
     }
 
+    /*#26a2ff*/
+
     .mui-bar-tab .mui-tab-item-lib .mui-icon ~ .mui-tab-label {
         font-size: 11px;
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    
 </style>

@@ -1,12 +1,6 @@
 <template>
     <div>
-        <mt-swipe class="swipe" :auto="4000">
-            <mt-swipe-item v-for="image in carouselList" :key="image.id">
-                <a :href="image.url">
-                    <img :src="image.img"/>
-                </a>
-            </mt-swipe-item>
-        </mt-swipe>
+        <swipe :swiperList="carouselList" :isFull="true"/>
         <div class="mui-content">
             <ul class="mui-table-view mui-grid-view mui-grid-9">
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -22,10 +16,10 @@
                     </router-link>
                 </li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                    <a href="#">
+                    <router-link to="/goods/goodsList">
                         <img src="../../images/home/menu3.png">
                         <div class="mui-media-body">商品购买</div>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                     <a href="#">
@@ -52,6 +46,7 @@
 
 <script>
     import {Toast} from 'mint-ui';
+    import Swipe from "../subComponents/Swipe.vue";
 
     export default {
         data() {
@@ -72,6 +67,9 @@
         },
         created() {
             this.getCarousel();
+        },
+        components: {
+            Swipe
         }
     }
 </script>
