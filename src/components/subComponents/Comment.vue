@@ -32,7 +32,7 @@
         },
         methods: {
             getNewsComment() {
-                this.$http.get('http://127.0.0.1:8080/news/getNewsCommentList?pageNumber=' + this.pageIndex).then(response => {
+                this.$http.get('http://127.0.0.1:8011/news/getNewsCommentList?pageNumber=' + this.pageIndex).then(response => {
                     if (response.status === 200) {
                         this.newsCommentList = this.newsCommentList.concat(response.body);
                         this.pageIndex++;

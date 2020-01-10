@@ -9,6 +9,8 @@ import PhotoShare from "./components/photo/PhotoShare.vue";
 import PhotoInfo from "./components/photo/PhotoInfo.vue";
 import GoodsList from "./components/goods/GoodsList.vue";
 import GoodsInfo from "./components/goods/GoodsInfo.vue";
+import GoodsDesc from "./components/goods/GoodsDesc.vue";
+import GoodsComment from "./components/goods/GoodsComment.vue";
 
 const router = new VueRouter({
     routes: [
@@ -22,7 +24,9 @@ const router = new VueRouter({
         {path: '/photo/photoShare', component: PhotoShare},
         {path: '/photo/photoInfo/:id', component: PhotoInfo},
         {path: '/goods/goodsList', component: GoodsList},
-        {path: '/goods/goodsInfo/:id', component: GoodsInfo, name: 'goodsInfo'}
+        {path: '/goods/goodsInfo/:id', component: GoodsInfo, name: 'goodsInfo'},
+        {path: '/goods/goodsDesc/:id', component: GoodsDesc, name: 'goodsDesc'},
+        {path: '/goods/goodsComment/:id', component: GoodsComment, name: 'goodsComment'}
     ],
     linkActiveClass: 'mui-active'
 });
