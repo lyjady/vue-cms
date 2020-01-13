@@ -85,6 +85,13 @@
             },
             addShopCart() {
                 this.ballFlag = !this.ballFlag;
+                const goodsInfo = {
+                    id: this.id,
+                    count: this.num,
+                    price: this.goodsInfo.sell_price,
+                    selected: true
+                };
+                this.$store.commit('addGoodsToList', goodsInfo);
             },
             beforeEnter(el) {
                 el.style.transform = 'translate(0, 0)';

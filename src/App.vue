@@ -20,7 +20,7 @@
             </router-link>
             <router-link class="mui-tab-item-lib" to="/cart">
                 <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-                    <span id="cart" class="mui-badge">0</span>
+                    <span id="cart" class="mui-badge">{{ $store.getters.getGoodsCount }}</span>
                 </span>
                 <span class="mui-tab-label">购物车</span>
             </router-link>
