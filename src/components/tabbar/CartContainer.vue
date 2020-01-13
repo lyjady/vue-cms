@@ -5,24 +5,33 @@
                 <div class="mui-card" v-for="(item, index) in cartList" :key="item.id">
                     <div class="mui-card-content">
                         <div class="mui-card-content-inner">
-                            <mt-switch></mt-switch>
+                            <mt-switch v-model="$store.getters.getSelected[item.id]" @change="changeSelected(item.id, $store.getters.getSelected[item.id])"/>
                             <img :src="item.thumb_path"/>
                             <div class="info">
                                 <h3>{{ item.title }}</h3>
                                 <p>
                                     <span class="price">${{ item.sell_price }}</span>
                                     <el-input-number ref="number" v-model="$store.getters.getIdAndCount[item.id]" :min="1" :max="99"/>
-                                    <a href="#">删除</a>
+                                    <a href="#" @click.prevent="removeCart(item.id, index)">删除</a>
                                 </p>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="mui-card">
                     <div class="mui-card-content">
                         <div class="mui-card-content-inner">
-                            结算区域
+                            <div class="left">
+                                <p>总计(不含运费)</p>
+                                <p>
+                                    已勾选商品
+                                    <span class="settlement">{{ $store.getters.getSettlementData.count }}</span>件,
+                                    总价<span class="settlement">${{ $store.getters.getSettlementData.totalPrice }}</span>
+                                </p>
+                            </div>
+                            <div class="right">
+                                <el-button type="danger" round>去结算</el-button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,6 +65,17 @@
             },
             changeCount(index) {
                 console.log(this.$refs.number[index].currentValue);
+            },
+            changeSelected(id, status) {
+                const cart = {
+                    id: id,
+                    selected: status
+                };
+                this.$store.commit('updateCartSelected', cart);
+            },
+            removeCart(id, index) {
+                this.cartList.splice(index, 1);
+                this.$store.commit('removeCart', id);
             }
         },
         created() {
@@ -94,5 +114,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+
+    .settlement {
+        color: red;
+        font-weight: bold;
     }
 </style>

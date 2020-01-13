@@ -1,7 +1,11 @@
 <template>
     <div class="app-container">
         <!-- header -->
-        <mt-header fixed title="秀清大猪猪">秀清大猪猪</mt-header>
+        <mt-header fixed title="秀清大猪猪">
+            <router-link to="" slot="left" v-show="isShow">
+                <mt-button icon="back" @click="back">返回</mt-button>
+            </router-link>
+        </mt-header>
 
         <!-- content -->
         <transition>
@@ -33,7 +37,27 @@
 </template>
 
 <script>
-
+    export default {
+        data() {
+            return {
+                isShow: false
+            }
+        },
+        methods: {
+            back() {
+                this.$router.go(-1);
+            }
+        },
+        watch: {
+            '$route.path': function (newValue) {
+                if (newValue !== '/home') {
+                    this.isShow = true;
+                } else {
+                    this.isShow = false;
+                }
+            }
+        }
+    }
 </script>
 
 <style scoped>

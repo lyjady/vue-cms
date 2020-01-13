@@ -46,6 +46,24 @@ const store = new Vuex.Store({
                 state.goodsList.push(goods);
             }
             localStorage.setItem('cart', JSON.stringify(state.goodsList));
+        },
+        updateCartSelected(state, cart) {
+            state.goodsList.some(item => {
+                if (parseInt(item.id) === cart.id) {
+                    item.selected = cart.selected;
+                    return true;
+                }
+            });
+            localStorage.setItem('cart', JSON.stringify(state.goodsList));
+        },
+        removeCart(state, id) {
+            state.goodsList.some((item, index) => {
+                if (parseInt(item.id) === id) {
+                    state.goodsList.splice(index, 1);
+                    return true;
+                }
+            });
+            localStorage.setItem('cart', JSON.stringify(state.goodsList));
         }
     },
     getters: {
@@ -60,6 +78,26 @@ const store = new Vuex.Store({
             const obj = {};
             state.goodsList.forEach(item => {
                 obj[item.id] = item.count;
+            });
+            return obj;
+        },
+        getSelected(state) {
+            const obj = {};
+            state.goodsList.forEach(item => {
+                obj[item.id] = item.selected;
+            });
+            return obj;
+        },
+        getSettlementData(state) {
+            let obj = {
+                count: 0,
+                totalPrice: 0
+            };
+            state.goodsList.forEach(item => {
+                if (item.selected) {
+                    obj.count += item.count;
+                    obj.totalPrice += item.price * item.count;
+                }
             });
             return obj;
         }
